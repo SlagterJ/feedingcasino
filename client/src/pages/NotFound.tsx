@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import Box from "../components/Box";
 
 const NotFound = () => {
   return (
@@ -6,9 +7,9 @@ const NotFound = () => {
       <Helmet>
         <title>404 | Feeding Casino</title>
       </Helmet>
-      <div>
+      <Box>
         <h1>Page was not found</h1>
-      </div>
+      </Box>
     </>
   );
 };
