@@ -2,6 +2,10 @@
 
 Ons project voor de examen training van meneer van Laar.
 
+## Zie Documentatie
+
+[Klik Hier](DOCUMENTATION.md)
+
 ## Installeer Project
 
 Clone:
