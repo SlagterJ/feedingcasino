@@ -35,7 +35,7 @@ const Box: FC<Props> = (props: Props) => {
       "w-full h-full": full,
       flex: !noFlex,
       ["flex-start justify-start justify-items-start content-start " +
-      "items-start flex-wrap"]: !noFlex && !noDefaultFlex,
+      "items-start flex-wrap"]: !noFlex && !noDefaultFlex && !center,
       ["flex-col justify-center justify-items-center content-center " +
       "items-center flex-nowrap"]: !noFlex && center,
     }),
