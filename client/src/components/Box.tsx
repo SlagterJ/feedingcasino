@@ -31,14 +31,18 @@ const Box: FC<Props> = (props: Props) => {
   const Component = component!;
 
   const cls = {
-    main: c("m-0 p-0", {
-      "w-full h-full": full,
-      flex: !noFlex,
-      ["flex-start justify-start justify-items-start content-start " +
-      "items-start flex-wrap"]: !noFlex && !noDefaultFlex && !center,
-      ["flex-col justify-center justify-items-center content-center " +
-      "items-center flex-nowrap"]: !noFlex && center,
-    }),
+    main: c(
+      "m-0 p-0",
+      {
+        "w-full h-full": full,
+        flex: !noFlex,
+        ["flex-start justify-start justify-items-start content-start " +
+        "items-start flex-wrap"]: !noFlex && !noDefaultFlex && !center,
+        ["flex-col justify-center justify-items-center content-center " +
+        "items-center flex-nowrap"]: !noFlex && center,
+      },
+      className
+    ),
   };
 
   return (

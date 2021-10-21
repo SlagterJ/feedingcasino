@@ -1,16 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-type ToastType = "normal" | "confirm" | "alert";
-
-interface Toast {
-  title: string;
-  description: string;
-  type: ToastType;
-}
+import Toast, { ToastID } from "../types/Toast";
+import Omit from "../types/Omit";
+import { v4 as uuid } from "uuid";
+import _ from "lodash";
 
 interface ToastsState {
   value: Toast[];
 }
+
+interface ToastPayload extends Omit<Toast, "id"> {}
 
 const initialState = {
   value: [],
@@ -20,13 +18,26 @@ const toastsSlice = createSlice({
   name: "toasts",
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<Toast>) => {
-      const newToast = action.payload;
+    add: (state, action: PayloadAction<ToastPayload>) => {
+      const payload = action.payload;
+
+      const id = uuid();
+
+      const newToast = {
+        id,
+        ...payload,
+      };
 
       state.value.push(newToast);
     },
-    removeTop: (state) => {
-      state.value.shift();
+    remove: (state, action: PayloadAction<ToastID>) => {
+      const id = action.payload;
+      const toasts = state.value;
+      const toastsWithoutRemovedId = _.filter(toasts, (toast) => {
+        return toast.id !== id;
+      });
+
+      state.value = toastsWithoutRemovedId;
     },
     clear: (state) => {
       state.value = initialState.value;
@@ -34,6 +45,6 @@ const toastsSlice = createSlice({
   },
 });
 
-export const { add, removeTop, clear } = toastsSlice.actions;
+export const { add, remove, clear } = toastsSlice.actions;
 
 export default toastsSlice.reducer;
