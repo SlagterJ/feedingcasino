@@ -55,7 +55,7 @@ const Toast: FC<Props> = (props: Props) => {
 
   const cls = {
     wrapper: c(
-      "w-full md:w-96 h-28 shadow-lg",
+      "w-full md:w-96 h-28 shadow-lg pointer-events-auto",
       "my-4 mx-4 md:mr-0 md:ml-4 p-2 rounded",
       {
         "bg-gray-700": type === "normal",
