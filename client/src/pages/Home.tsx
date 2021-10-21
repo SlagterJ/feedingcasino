@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import Box from "../components/Box";
+import Typography from "../components/Typography";
 
 const Home = () => {
   return (
@@ -8,7 +9,7 @@ const Home = () => {
         <title>Home | Feeding Casino</title>
       </Helmet>
       <Box>
-        <h1>Hello, World!</h1>
+        <Typography variant="h1">Hello, World!</Typography>
       </Box>
     </>
   );
