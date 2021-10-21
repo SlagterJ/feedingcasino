@@ -1,4 +1,4 @@
-import { ElementType, FC } from "react";
+import { ElementType, ReactNode, FC } from "react";
 import DefaultProps from "../types/DefaultProps";
 import c from "classnames";
 
@@ -9,7 +9,7 @@ export interface Props extends DefaultProps {
   // If the component should not render default flex values
   noDefaultFlex?: boolean;
   center?: boolean; // If the component should center its children
-  children?: any | any[];
+  children?: ReactNode;
 }
 
 /**
