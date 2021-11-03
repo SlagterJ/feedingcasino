@@ -1,6 +1,11 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-const rootReducer = combineReducers({});
+// Import reducers
+import toasts from "../global/toasts";
+
+const rootReducer = combineReducers({
+  toasts,
+});
 
 const store = configureStore({
   devTools: true,
