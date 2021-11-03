@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,8 +15,8 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::group(['prefix' => 'auth'], function () {
-    Route::get('/signup', [LoginController::class, 'signup']);
-    Route::get('/login', [LoginController::class, 'login']);
-    Route::get('/logout', [LoginController::class, 'logout']);
+Route::group(['prefix' => 'auth', 'middleware' => 'api'], function () {
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout']);
 });
