@@ -2,7 +2,7 @@ import { useDispatch } from "../app/hooks";
 import { useFormik } from "formik";
 import { add } from "../global/toasts";
 import { Helmet } from "react-helmet-async";
-import Box from "../components/Box";
+import Form from "../components/input/Form";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -22,7 +22,7 @@ const Home = () => {
       <Helmet>
         <title>Home | Feeding Casino</title>
       </Helmet>
-      <Box component="form" onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <label>
           Title
           <input name="title" value={values.title} onChange={handleChange} />
@@ -36,7 +36,7 @@ const Home = () => {
           />
         </label>
         <button type="submit">Submit</button>
-      </Box>
+      </Form>
     </>
   );
 };

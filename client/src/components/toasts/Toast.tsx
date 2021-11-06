@@ -4,7 +4,7 @@ import IToast from "../../types/Toast";
 import { FC } from "react";
 import { useDispatch } from "../../app/hooks";
 import { remove } from "../../global/toasts";
-import { AnimationProps } from "framer-motion";
+import { AnimationProps, AnimatePresence } from "framer-motion";
 import c from "classnames";
 import MotionBox from "../MotionBox";
 import Box from "../Box";
@@ -43,13 +43,13 @@ const Toast: FC<Props> = (props: Props) => {
   // Animation settings
   const animate = {
     initial: {
-      x: "-50vw",
+      x: "-100vw",
     },
     animate: {
       x: "0",
     },
     exit: {
-      x: "-50vw",
+      x: "-100vw",
     },
   } as AnimationProps;
 
@@ -64,22 +64,34 @@ const Toast: FC<Props> = (props: Props) => {
       },
       className
     ),
-    title: c("w-full h-1/4"),
+    title_wrapper: c(
+      "w-full h-9/12",
+      "flex-row justify-center justify-items-center content-center",
+      "items-center flex-nowrap"
+    ),
+    title: c("text-lg h-full w-3/12"),
+    button: c("h-full w-1/4"),
     description_wrapper: c("w-full h-3/4"),
   };
 
   return (
-    <MotionBox className={cls.wrapper} {...animate} center {...rest}>
-      <Typography className={cls.title} variant="h5">
-        {title}
-      </Typography>
-      <button onClick={handleDismissClick}>Dismiss</button>
-      <Box className={cls.description_wrapper} center>
-        <Typography variant="p" full>
-          {description}
-        </Typography>
-      </Box>
-    </MotionBox>
+    <AnimatePresence>
+      <MotionBox className={cls.wrapper} {...animate} center {...rest}>
+        <Box className={cls.title_wrapper} noDefaultFlex>
+          <Typography className={cls.title} variant="h5">
+            {title}
+          </Typography>
+          <button className={cls.button} onClick={handleDismissClick}>
+            X
+          </button>
+        </Box>
+        <Box className={cls.description_wrapper} center>
+          <Typography variant="p" full>
+            {description}
+          </Typography>
+        </Box>
+      </MotionBox>
+    </AnimatePresence>
   );
 };
 

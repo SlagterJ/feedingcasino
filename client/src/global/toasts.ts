@@ -28,6 +28,11 @@ const toastsSlice = createSlice({
         ...payload,
       };
 
+      // Remove the first toast if there are already 3 toasts on screen
+      if (state.value.length >= 3) {
+        state.value.shift();
+      }
+
       state.value.push(newToast);
     },
     remove: (state, action: PayloadAction<ToastID>) => {

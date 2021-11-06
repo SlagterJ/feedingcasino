@@ -1,7 +1,7 @@
 import DefaultProps from "../../types/DefaultProps";
 import { FC } from "react";
 import { useSelector } from "../../app/hooks";
-import { AnimatePresence } from "framer-motion";
+import { AnimateSharedLayout } from "framer-motion";
 import c from "classnames";
 import Box from "../Box";
 import Toast from "./Toast";
@@ -33,12 +33,13 @@ const ToastsHandler: FC<Props> = (props: Props) => {
     <Box className={cls.wrapper} noDefaultFlex {...rest}>
       {/* Wrap in AnimatePresence to allow for
         animations on mount and unmount. */}
-      <AnimatePresence>
+      <AnimateSharedLayout>
         {/* Return a toast for each toast in the array. */}
         {toasts.map((toast) => {
           return (
             <Toast
               key={toast.id}
+              layout
               id={toast.id}
               title={toast.title}
               description={toast.description}
@@ -46,7 +47,7 @@ const ToastsHandler: FC<Props> = (props: Props) => {
             />
           );
         })}
-      </AnimatePresence>
+      </AnimateSharedLayout>
     </Box>
   );
 };
