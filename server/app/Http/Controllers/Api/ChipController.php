@@ -37,21 +37,21 @@ class ChipController extends Controller
         }
 
         $user = $request->user('api');
+        $chip = Chip::find($user->id);
 
-        if (Chip::where('user_id', '=', $user->id)->exists()) {
-            $chip = Chip::find($user->id);
-
-            $chip->update([
-                'chips' => $chip->chips + $request->chips,
-                'updated_at' => Carbon::now(),
+        if($chip === null)
+        {
+            $chip = Chip::create([
+                'user_id' => $user->id,
+                'chips' => $request->chips,
             ]);
 
             return response(['message' => $chip]);
         }
 
-        $chip = Chip::create([
-            'user_id' => $user->id,
-            'chips' => $request->chips,
+        $chip->update([
+            'chips' => $chip->chips + $request->chips,
+            'updated_at' => Carbon::now(),
         ]);
 
         return response(['message' => $chip]);
