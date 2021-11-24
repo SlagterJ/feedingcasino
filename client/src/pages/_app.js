@@ -1,4 +1,5 @@
 import "normalize.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Provider as ReduxProvider } from "react-redux";
 import { store } from "../app/store";
 import { useReduxHydrate } from "next-redux-hydrate";
