@@ -1,6 +1,5 @@
-import { useFormik } from "formik";
-import { Box } from "../components/Box";
-import { Typography } from "../components/Typography";
+import { useFormik } from 'formik';
+import { Button, Input } from 'reactstrap';
 
 const isOdd = (num) => num % 2 === 1;
 
@@ -9,7 +8,7 @@ export const Game = () => {
     initialValues: {
       startingMoney: 0,
       bid: 0,
-      color: "",
+      color: '',
       amountOfRevs: 0,
     },
     onSubmit: (values) => {
@@ -17,64 +16,54 @@ export const Game = () => {
       const gameResult = Math.floor(Math.random() * 38);
 
       if (isOdd(gameResult)) {
-        winningColor = "red";
+        winningColor = 'red';
       } else if (gameResult === 37 || gameResult === 38) {
-        winningColor = "green";
+        winningColor = 'green';
       } else {
-        winningColor = "black";
+        winningColor = 'black';
       }
 
       if (values.color === winningColor) {
-        alert("You won!");
+        alert('You won!');
         return;
       }
 
-      alert("You lost!");
+      alert('You lost!');
     },
   });
 
   return (
-    <Box component="form" onSubmit={handleSubmit}>
-      <Box>
-        <Typography>Startgeld</Typography>
-        <Box
-          component="input"
-          name="startingMoney"
-          value={values.startingMoney}
-          onChange={handleChange}
-        />
-      </Box>
-      <Box>
-        <Typography>Bod</Typography>
-        <Box
-          component="input"
-          name="bid"
-          value={values.bid}
-          onChange={handleChange}
-        />
-      </Box>
-      <Box>
-        <Typography>Kleur</Typography>
-        <Box
-          component="input"
-          name="color"
-          value={values.color}
-          onChange={handleChange}
-        />
-      </Box>
-      <Box>
-        <Typography>Aantal spins</Typography>
-        <Box
-          component="input"
-          name="amountOfRevs"
-          value={values.amountOfRevs}
-          onChange={handleChange}
-        />
-      </Box>
-      <Box component="button" type="submit" name="submit">
-        Submit
-      </Box>
-    </Box>
+    <div className="container">
+      <form onSubmit={handleSubmit}>
+        <div>
+          <h1>Startgeld</h1>
+          <Input
+            name="startingMoney"
+            value={values.startingMoney}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <h1>Bod</h1>
+          <Input name="bid" value={values.bid} onChange={handleChange} />
+        </div>
+        <div>
+          <h1>Kleur</h1>
+          <Input name="color" value={values.color} onChange={handleChange} />
+        </div>
+        <div>
+          <h1>Aantal spins</h1>
+          <Input
+            name="amountOfRevs"
+            value={values.amountOfRevs}
+            onChange={handleChange}
+          />
+        </div>
+        <Button type="submit" name="submit">
+          Submit
+        </Button>
+      </form>
+    </div>
   );
 };
 

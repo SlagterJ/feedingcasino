@@ -16,10 +16,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
-    "reactstrap": "^9.0.1",
-    "styled-components": "^5.3.3"
+    "reactstrap": "^9.0.1"
   },
-  "devDependencies": {
-    "babel-plugin-styled-components": "^1.13.3"
-  }
+  "devDependencies": {}
 }
