@@ -2,9 +2,13 @@ import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import axios from "axios";
 import { Input } from "../components/Input";
+import { Button } from "reactstrap";
+import { useDispatch } from "react-redux";
+import { setUser } from "../global/user";
 
 export const Auth = () => {
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {
@@ -12,15 +16,16 @@ export const Auth = () => {
       password: "",
     },
     onSubmit: (values) => {
-      axios.post("localhost:8000/api/auth/login", values).then((res) => {
-        // router.push("/");
-        console.log(res.access_token);
+      axios.post("http://localhost:8000/api/auth/login", values).then((res) => {
+        console.log(res);
+        dispatch(setUser(res.data));
+        router.push("/");
       });
     },
   });
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <h1 variant="h1">Authentication</h1>
       <Input
         title="E-Mail"
@@ -34,7 +39,8 @@ export const Auth = () => {
         value={values.password}
         onChange={handleChange}
       />
-    </div>
+      <Button type="submit">Submit</Button>
+    </form>
   );
 };
 
