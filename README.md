@@ -2,6 +2,13 @@
 
 Ons project voor de examen training van meneer van Laar.
 
+# BELANGRIJK
+
+Door dat er werd aangekondigt dat we vanaf 1 december apart moeten werken
+(en ik uberhaupt het project eigenlijk niet hoef te maken) heb ik deze
+repository op archived gezet. Om er aan verder te werken zal je het moeten
+clonen. Succes!
+
 ## Zie Documentatie
 
 [Klik Hier](DOCUMENTATION.md)
